@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <div id = "main">
+        <h1>Enter administrator credentials</h1>
+        </hr>
+        <form action="/create" method="post" name="event_admin_login" onsubmit="return validateForm()">
+            <label for="event_admin_user">User</label>
+            <input name="event_admin_user" type="text" class="required_text" value="" size="25"/><br/>
+            <label for="event_admin_password">Password</label>
+            <input name="event_admin_password" type="password" class="required_text" value="" size="25"/><br/>
+            <input class="submit" type="submit" name="event_admin_login_button" value="Log in" />
+        </form>
+    </div>
+  </body>
+</html>
+{% endautoescape %}

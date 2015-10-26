@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <div id = "main">
+        <h1>Event Management Portal</h1>
+        <hr/>
+        <a href="/admin_login" > Create Event </a> </br>
+        <a href="/confirm" > Confirm Attendance </a> </br>
+        <a href="/cancel" > Cancel Attendance </a> </br>
+        <a href="/check" > Check Attendance </a> </br>
+    </div>
+  </body>
+</html>
+{% endautoescape %}
