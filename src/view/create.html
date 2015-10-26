@@ -7,7 +7,17 @@
   </head>
   <body>
     <div id = "main">
-        <h1>Create event TODO</h1>
+        <h1>Please complete event information </h1>
+        <hr/>
+        <form action="/" method="post" name="event_data" onsubmit="return validateForm()">
+            <label for="event_name">Name</label>
+            <input name="event_name" type="text" class="required_text" value="" size="25"/><br/>
+            <label for="event_date">Date</label>
+            <input name="event_guest_lastname" type="date" class="required_text" value="" size="25"/><br/>
+            <label for="event_vacancies">Email</label>
+            <input name="event_vacancies" type="text" class="required_text" value="" size="25"/><br/>
+            <input class="submit" type="submit" name="event_data_send" value="Create event" />
+        </form>
     </div>
   </body>
 </html>

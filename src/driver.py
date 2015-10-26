@@ -1,15 +1,11 @@
 # [START imports]
 import os
-import cgi
 
 import webapp2
 import model
 import controller
 
-MODEL = model.Model(
-    os.path.dirname(os.path.abspath(__file__)) + os.path.sep + "config.txt"
-)
-# [END imports]
+#[END imports]
 
 """
 The above is a class definition. Here, we're instatiating
