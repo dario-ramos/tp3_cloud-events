@@ -7,10 +7,9 @@ class Model(object):
         self.config = configuration.Configuration(configFile)
         if( self.config.getProperty("mock_db") == "1" ):
             self.loginManager = login_manager.MockLoginManager()
-            self.eventRepository = event_repository.MockEventRepository()
         else:
             self.loginManager = login_manager.LoginManager()
-            self.eventRepository = event_repository.EventRepository()
+        self.eventRepository = event_repository.EventRepository()
 
     def getLoginManager(self):
         return self.loginManager

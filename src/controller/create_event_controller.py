@@ -1,6 +1,7 @@
 import webapp2
 import cgi
 import environment
+import time
 
 class CreateEventController(webapp2.RequestHandler):
     def get(self):
@@ -13,10 +14,10 @@ class CreateEventController(webapp2.RequestHandler):
     def post(self):
         name = cgi.escape(self.request.get('event_name'))
         date = cgi.escape(self.request.get('event_date'))
-        vacancies = cgi.escape(self.request.get('event_vacancies'))
+        vacancies = int( cgi.escape(self.request.get('event_vacancies')) )
         environment.MODEL.getEventRepository().create( name, date, vacancies )
         self.response.out.write('<html><body>')
         self.response.out.write('<h1> Event created! </h1>')
-        self.response.out.write('<p> Name: ' + name + '<br/> Date: ' + date + '</br>Vacancies: ' + vacancies + '</p>')
+        self.response.out.write('<p> Name: ' + name + '<br/> Date: ' + date + '</br>Vacancies: ' + str(vacancies) + '</p>')
         self.response.out.write('<a href="/"> Back to portal </a>')
         self.response.out.write('</html></body>')
