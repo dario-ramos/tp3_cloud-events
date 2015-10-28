@@ -3,3 +3,4 @@ from create_event_controller import CreateEventController
 from confirmation_result_controller import ConfirmationResultController
 from confirm_attendance_controller import ConfirmAttendanceController
 from admin_login_controller import AdminLoginController
+from failed_login_controller import FailedLoginController

@@ -3,12 +3,7 @@ import cgi
 import environment
 
 class CreateEventController(webapp2.RequestHandler):
-    def renderRejectedLoginScreen(self):
-        self.response.write('<html><body>')
-        self.response.write('<h1>Invalid login</h1>')
-        self.response.write('</body></html>')
-
-    def createEvent(self):
+    def get(self):
         template_values = {
             "title" : "Create Event"
         }
@@ -16,10 +11,12 @@ class CreateEventController(webapp2.RequestHandler):
         self.response.out.write(template.render(template_values))
 
     def post(self):
-        user = cgi.escape(self.request.get('event_admin_user'))
-        password = cgi.escape(self.request.get('event_admin_password'))
-        validLogin = environment.MODEL.getLoginManager().admin_login( user, password )
-        if not validLogin:
-            self.renderRejectedLoginScreen()
-        else:
-            self.createEvent()
+        name = cgi.escape(self.request.get('event_name'))
+        date = cgi.escape(self.request.get('event_date'))
+        vacancies = cgi.escape(self.request.get('event_vacancies'))
+        environment.MODEL.getEventRepository().create( name, date, vacancies )
+        self.response.out.write('<html><body>')
+        self.response.out.write('<h1> Event created! </h1>')
+        self.response.out.write('<p> Name: ' + name + '<br/> Date: ' + date + '</br>Vacancies: ' + vacancies + '</p>')
+        self.response.out.write('<a href="/"> Back to portal </a>')
+        self.response.out.write('</html></body>')
