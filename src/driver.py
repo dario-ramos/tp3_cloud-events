@@ -25,6 +25,7 @@ app = webapp2.WSGIApplication([
     ('/check', controller.check_attendance_controller.CheckAttendanceController)
 ], debug=True)
 
+
 def main():
     app.run()
 

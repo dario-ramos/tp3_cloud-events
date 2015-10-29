@@ -6,10 +6,12 @@ import event_repository
 import guest_repository
 import attendance_repository
 
+
 class Model(object):
+
     def __init__(self, configFile):
         self.config = configuration.Configuration(configFile)
-        if( self.config.getProperty("mock_db") == "1" ):
+        if(self.config.getProperty("mock_db") == "1"):
             self.loginManager = login_manager.MockLoginManager()
         else:
             self.loginManager = login_manager.LoginManager()

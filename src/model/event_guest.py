@@ -2,6 +2,7 @@
 
 from google.appengine.ext import ndb
 
+
 class EventGuest(ndb.Model):
     firstName = ndb.StringProperty(indexed=False)
     lastName = ndb.StringProperty(indexed=False)

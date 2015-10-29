@@ -2,10 +2,12 @@
 
 import os
 
+
 class Configuration:
+
     def __init__(self, configFile):
         if not os.path.isfile(configFile):
-            raise IOError( "Config file not found at: " + configFile )
+            raise IOError("Config file not found at: " + configFile)
         fileLines = []
         with open(configFile) as f:
             fileLines = f.readlines()
@@ -18,7 +20,7 @@ class Configuration:
             keyAndValue = line.split("=")
             if len(keyAndValue) != 2:
                 continue
-            self.keys[ keyAndValue[0].strip() ] = keyAndValue[1].strip()
+            self.keys[keyAndValue[0].strip()] = keyAndValue[1].strip()
 
-    def getProperty( self, propName ):
+    def getProperty(self, propName):
         return self.keys[propName]
