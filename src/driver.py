@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # [START imports]
 import os
 

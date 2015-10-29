@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import configuration
 import login_manager
 import event_repository

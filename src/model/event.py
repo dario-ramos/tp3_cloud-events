@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from google.appengine.ext import ndb
 
 DEFAULT_EVENT_NAME = 'default_event'

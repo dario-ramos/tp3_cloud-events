@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import environment
 import webapp2
 import cgi

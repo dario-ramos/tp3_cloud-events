@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from abc import ABCMeta, abstractmethod
 from google.appengine.ext import ndb
 from google.appengine.ext import db

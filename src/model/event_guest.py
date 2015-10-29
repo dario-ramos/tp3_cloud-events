@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from google.appengine.ext import ndb
 
 class EventGuest(ndb.Model):
