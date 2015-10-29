@@ -15,7 +15,7 @@ class IEventRepository:
 
 class EventRepository(IEventRepository):
     def create(self, aName, aDate, aVacancies):
-        newEvent = Event(parent=eventKey())
+        newEvent = Event( parent = event.eventKey() )
         newEvent.name = aName
         newEvent.date = aDate
         newEvent.vacancies = aVacancies
