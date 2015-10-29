@@ -2,7 +2,6 @@
 import os
 
 import webapp2
-import model
 import controller
 
 #[END imports]
@@ -17,7 +16,6 @@ app = webapp2.WSGIApplication([
     ('/', controller.main_controller.MainController),
     ('/confirm', controller.confirm_attendance_controller.ConfirmAttendanceController),
     ('/admin_login', controller.admin_login_controller.AdminLoginController),
-    ('/result', controller.confirmation_result_controller.ConfirmationResultController),
     ('/create', controller.create_event_controller.CreateEventController),
     ('/failed_login', controller.failed_login_controller.FailedLoginController),
     ('/select_event', controller.select_event_controller.SelectEventController),
