@@ -1,6 +1,8 @@
 import configuration
 import login_manager
 import event_repository
+import guest_repository
+import attendance_repository
 
 class Model(object):
     def __init__(self, configFile):
@@ -10,9 +12,17 @@ class Model(object):
         else:
             self.loginManager = login_manager.LoginManager()
         self.eventRepository = event_repository.EventRepository()
+        self.guestRepository = guest_repository.GuestRepository()
+        self.attendanceRepository = attendance_repository.AttendanceRepository()
 
     def getLoginManager(self):
         return self.loginManager
 
     def getEventRepository(self):
         return self.eventRepository
+
+    def getGuestRepository(self):
+        return self.guestRepository
+
+    def getAttendanceRepository(self):
+        return self.attendanceRepository

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{{ title }}</title>
+    </head>
+    <body>
+    <div id = "main">
+        <h1>Select Event</h1>
+        <hr/>
+        {% for item in event_list %}
+            <a href="/confirm?event_id={{ item }}" >{{item}}</a>
+        {% endfor %}
+    </div>
+    </body>
+</html>
+{% endautoescape %}

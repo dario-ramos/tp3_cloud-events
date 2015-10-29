@@ -45,7 +45,7 @@
     <div id = "main">
         <h1>Please complete event information </h1>
         <hr/>
-        <form action="/create" method="post" name="event_data" onsubmit="return validateForm()">
+        <form action="/create?event_id={{event_id}}" method="post" name="event_data" onsubmit="return validateForm()">
             <label for="event_name">Name</label>
             <input name="event_name" type="text" class="required_text" value="" size="25"/><br/>
             <label for="event_date">Date</label>

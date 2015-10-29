@@ -20,6 +20,7 @@ app = webapp2.WSGIApplication([
     ('/result', controller.confirmation_result_controller.ConfirmationResultController),
     ('/create', controller.create_event_controller.CreateEventController),
     ('/failed_login', controller.failed_login_controller.FailedLoginController),
+    ('/select_event', controller.select_event_controller.SelectEventController),
 ], debug=True)
 
 def main():

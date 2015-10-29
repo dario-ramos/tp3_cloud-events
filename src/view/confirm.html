@@ -42,9 +42,9 @@
   </head>
   <body>
     <div id = "main">
-        <h1>Please complete your information </h1>
+        <h1>Please complete your information for event {{event_id}} </h1>
         <hr/>
-        <form action="/result" method="post" name="event_guest_data" onsubmit="return validateForm()">
+        <form action="/confirm?event_id={{event_id}}" method="post" name="event_guest_data" onsubmit="return validateForm()">
             <label for="event_guest_first_name">First Name</label>
             <input name="event_guest_first_name" type="text" class="required_text" value="" size="25"/><br/>
             <label for="event_guest_lastname">Last Name</label>
