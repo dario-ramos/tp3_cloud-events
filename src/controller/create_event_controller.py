@@ -1,7 +1,6 @@
 import webapp2
 import cgi
 import environment
-import time
 
 class CreateEventController(webapp2.RequestHandler):
     def get(self):

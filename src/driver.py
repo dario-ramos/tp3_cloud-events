@@ -21,6 +21,8 @@ app = webapp2.WSGIApplication([
     ('/create', controller.create_event_controller.CreateEventController),
     ('/failed_login', controller.failed_login_controller.FailedLoginController),
     ('/select_event', controller.select_event_controller.SelectEventController),
+    ('/cancel', controller.cancel_attendance_controller.CancelAttendanceController),
+    ('/check', controller.check_attendance_controller.CheckAttendanceController)
 ], debug=True)
 
 def main():

@@ -5,3 +5,5 @@ from confirm_attendance_controller import ConfirmAttendanceController
 from admin_login_controller import AdminLoginController
 from failed_login_controller import FailedLoginController
 from select_event_controller import SelectEventController
+from cancel_attendance_controller import CancelAttendanceController
+from check_attendance_controller import CheckAttendanceController

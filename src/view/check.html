@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ title }}</title>
+    <script>
+        function validateTextField( form, fieldName, userFriendlyFieldName ){
+            var fieldValue = form[fieldName].value;
+            if ( fieldValue == null || fieldValue == ""){
+                alert( userFriendlyFieldName + " is a mandatory field");
+                return false;
+            }
+            return true;
+        }
+        function validateForm(){
+            var form = document.forms["check_attendance_data"];
+            if( !validateTextField(form, "event_name", "Event name") ){
+                return false;
+            }
+            if( !validateTextField(form, "guest_email", "Guest email") ){
+                return false;
+            }
+            return true;
+        }
+    </script>
+  </head>
+  <body>
+    <div id = "main">
+        <h1>Enter event name and guest email</h1>
+        <hr/>
+        <form action="/check" method="post" name="check_attendance_data" onsubmit="return validateForm()">
+            <label for="event_name">Name</label>
+            <input name="event_name" type="text" class="required_text" value="" size="25"/><br/>
+            <label for="guest_email">Guest email</label>
+            <input name="guest_email" type="text" class="required_text" value="" size="25"/><br/>
+            <input class="submit" type="submit" name="event_data_send" value="Check attendance" />
+        </form>
+    </div>
+  </body>
+</html>
+{% endautoescape %}

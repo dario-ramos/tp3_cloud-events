@@ -18,6 +18,34 @@ class ConfirmAttendanceController(webapp2.RequestHandler):
         self.response.out.write('<a href="/"> Back to portal </a>')
         self.response.out.write('</html></body>')
 
+    def renderAlreadyConfirmedScreen(self):
+        self.response.out.write('<html><body>')
+        self.response.out.write('<h1> Attendance has already been confirmed by this guest for this event! </h1>')
+        self.response.out.write('<a href="/"> Back to portal </a>')
+        self.response.out.write('</html></body>')
+
+    def registerAttendance(self, event, guestFirstName, guestLastName, guestEmail, guestCompany):
+        #Check if guest exists. If it does not, create it
+        guestRepo = environment.MODEL.getGuestRepository()
+        guest = guestRepo.getByEmail( guestEmail )
+        if guest is None:
+            guestRepo.create( guestFirstName, guestLastName, guestEmail, guestCompany )
+            guest = guestRepo.getByEmail( guestEmail )
+        #Check if attendance for this guest exists
+        attendanceRepo = environment.MODEL.getAttendanceRepository()
+        attendance = attendanceRepo.getByEventNameAndGuestEmail( event.name, guestEmail )
+        if attendance is not None:
+            self.renderAlreadyConfirmedScreen()
+        else:
+            attendanceRepo.create( guestEmail, event.name )
+            event.vacancies = event.vacancies - 1
+            environment.MODEL.getEventRepository().update( event )
+            self.response.out.write('<html><body>')
+            self.response.out.write('<h1> Attendance confirmed! </h1>')
+            self.response.out.write('<p> Name: ' + guestFirstName + ' ' + guestLastName + '<br/> Email: ' + guestEmail + '</br>Company: ' + guestCompany + '</br>Event: ' + event.name +'<br/>Vacancies: ' + str(event.vacancies) + '</p>')
+            self.response.out.write('<a href="/"> Back to portal </a>')
+            self.response.out.write('</html></body>')
+
     def post(self):
         guestFirstName = cgi.escape(self.request.get('event_guest_first_name'))
         guestLastName = cgi.escape(self.request.get('event_guest_last_name'))
@@ -30,15 +58,4 @@ class ConfirmAttendanceController(webapp2.RequestHandler):
         if event.vacancies == 0:
             self.renderNoVacanciesScreen()
         else:
-            #Add guest
-            guestRepo = environment.MODEL.getGuestRepository()
-            guestRepo.create( guestFirstName, guestLastName, guestEmail, guestCompany )
-            guest = guestRepo.getByEmail( guestEmail )
-            environment.MODEL.getAttendanceRepository().create( guest, event )
-            event.vacancies = event.vacancies - 1
-            eventRepo.update( event )
-            self.response.out.write('<html><body>')
-            self.response.out.write('<h1> Attendance confirmed! </h1>')
-            self.response.out.write('<p> Name: ' + guestFirstName + ' ' + guestLastName + '<br/> Email: ' + guestEmail + '</br>Company: ' + guestCompany + '</br>Event: ' + event.name +'<br/>Vacancies: ' + str(event.vacancies) + '</p>')
-            self.response.out.write('<a href="/"> Back to portal </a>')
-            self.response.out.write('</html></body>')
+            self.registerAttendance( event, guestFirstName, guestLastName, guestEmail, guestCompany )
