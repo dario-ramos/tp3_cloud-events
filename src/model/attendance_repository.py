@@ -34,5 +34,13 @@ class AttendanceRepository(IAttendanceRepository):
     def deleteByEventNameAndGuestEmail(self, eventName, guestEmail):
         attendance = self.getByEventNameAndGuestEmail(eventName, guestEmail)
         if attendance is not None:
+            #TODO Not deleting. Try something like:
+            """
+            event_id = self.request.get('eventId')
+            event_query = Event.query(Event.identity == event_id, ancestor=event_key())
+            event = event_query.get()
+            eventKey = ndb.Key("Events", event_key().id(), "Event", event.key.id())
+            eventKey.delete()
+            """
             attKey = db.Key.from_path(attendance.eventName, attendance.guestEmail)
             db.delete(attKey)
